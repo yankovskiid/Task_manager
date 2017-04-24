@@ -1,12 +1,13 @@
-h1 Tasks#index
-
-- if @task.present?
-	= @task[:name]
-- else
-	= @task.first
-= form_for(Task.new) do |f|
-	= f.label :name
-	= f.text_field :name
-	div.btn-primary
-		=f.submit
-<p>Find me in app/views/tasks/index.html.erb</p>
+.container
+  h1 Tasks#index
+  ol.sortable#tasks
+    - if @tasks.present?
+      - @tasks.each do |task|
+        = render task
+          /f.check_box(:status)
+    - else
+      h1 Tasks not found
+  hr
+  = simple_form_for(Task.new, remote: true) do |f|
+    = f.input :name
+    = f.button :submit, class: "btn-primary"

@@ -1,0 +1,4 @@
+li
+  div.panel.task
+    span = task.name
+    = check_box_tag task.id, task.status, task.archived?

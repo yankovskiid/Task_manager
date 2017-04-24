@@ -1,0 +1,10 @@
+ol
+  list-style-type: none
+  li
+    div.panel
+      background-color: #aaa
+      margin-bottom: 7px
+
+.task
+  display: flex
+  justify-content: space-between

@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'turbolinks:load', ->
+  $('.sortable').nestedSortable
+    handle: 'div'
+    items: 'li'
+    toleranceElement: '> div'
+  $("[type='checkbox']").each ->
+    $(this).change ->
+      console.log(this.id)
+      $.ajax
+        url: '/tasks/' + this.id
+        type: 'PATCH'
+        data: 'checked=' + this.checked
+        success: (result) ->
+          console.log(result)
