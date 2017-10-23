@@ -1,2 +1,0 @@
-$("<%= escape_javascript(render @task) %>").appendTo("#tasks");
-$('#task_name').val('');
